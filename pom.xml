@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>CurrencyConverterMicroservice</artifactId>
+    <artifactId>currency-converter-microservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>CurrencyConverterMicroservice</name>
     <description>CurrencyConverterMicroservice</description>
@@ -80,6 +80,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <image>
+                        <name>currency/conv-${project.artifactId}:${project.version}</name>
+                    </image>
+                    <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
