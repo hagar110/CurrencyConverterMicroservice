@@ -21,7 +21,8 @@ public class CurrencyConversionController {
 
     @GetMapping("/currency-conversion/from/{from}/to/{to}/quantity/{quantity}")
     public CurrencyConversion calculateCurrencyConversion(@PathVariable String from, @PathVariable String to, @PathVariable BigDecimal quantity){
-       CurrencyConversion currencyConversion=currencyExchangeClient.getExchangeValue(from, to);
+       CurrencyConversion currencyConversion=currencyExchangeClient.getExchangeValue(from, to);// when working with docker this method will return 500 because it calls localhost:8000 which is no longer valid ,
+        //to be able to work properly change localhost to currency-exchange
         return new CurrencyConversion(currencyConversion.getId(),from,to,quantity,currencyConversion.getConversionMultiple(),quantity.multiply(currencyConversion.getConversionMultiple()), currencyConversion.getEnvironment());
     }
     @GetMapping("/currency-conversion-feign/from/{from}/to/{to}/quantity/{quantity}")
